@@ -21,9 +21,7 @@ module.exports = {
     },
 
     async getUser(request, response) {
-        const post = request.body;
-
-        console.log(post.cpf)
+        const post = request.query;
         let user;
 
         user = await connection('users')
@@ -32,9 +30,12 @@ module.exports = {
             .first();
 
         if (!user) {
-            return response.status(400).json({ error: 'No user found with this cpf.' });
+            return response.json({ success: false });
         }
 
-        return response.json(user);
+        return response.json({
+            ...user,
+            success: true 
+        });
     },
 };
