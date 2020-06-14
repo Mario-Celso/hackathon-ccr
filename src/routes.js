@@ -14,7 +14,6 @@ const TypeFormController = require('./controllers/TypeFormController');
 routes.post('/login', SessionController.login);
 
 routes.post('/webhook', TypeFormController.webhook)
-routes.get('/webhook', TypeFormController.webhook)
 
 routes.get('/users', UsersController.index);
 routes.post('/users', UsersController.create);

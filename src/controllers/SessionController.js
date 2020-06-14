@@ -5,15 +5,13 @@ module.exports = {
         const post = request.body;
         let user;
 
-        console.log(post);
-
         if(post.type == 'caminhoneiro'){
             user = await connection('users')
                 .where('cpf', post.cpf)
                 .select('name', 'first_access')
                 .first();
             
-            if (user.first_access == null){
+            if (user && user.first_access == null){
                 await connection('users')
                     .where( 'cpf', '=', post.cpf)
                     .update({
@@ -38,7 +36,7 @@ module.exports = {
         }
 
 
-        return response.json(user);
+        return response.json('ok');
     },
 
 };

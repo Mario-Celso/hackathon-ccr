@@ -9,12 +9,12 @@ module.exports = {
     },
 
     async create(request, response) {
-        const { name, email, phone, cpf} = request.body;
+        const { name, idade, phone, cpf} = request.body;
 
         const id = crypto.randomBytes(4).toString('HEX');
 
         await connection('users').insert({
-            id, name, email, phone, cpf
+            id, name, idade, phone, cpf
         });
 
         return response.json({ id });
