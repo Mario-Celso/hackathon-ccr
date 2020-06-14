@@ -16,6 +16,7 @@ routes.post('/login', SessionController.login);
 routes.post('/webhook', TypeFormController.webhook)
 
 routes.get('/users', UsersController.index);
+routes.get('/user', UsersController.getUser);
 routes.post('/users', UsersController.create);
 
 

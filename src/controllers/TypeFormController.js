@@ -6,7 +6,7 @@ module.exports = {
     async webhook(request, response) {
     
             const userResponse = request.body;
-            const cpf = userResponse.form_response.answers[3].number;
+            const cpf = toString(userResponse.form_response.answers[3].number);
 
             user = await connection('users')
                 .where('cpf', cpf)
@@ -18,7 +18,7 @@ module.exports = {
                 const id = crypto.randomBytes(4).toString('HEX');
                 
                 const name = userResponse.form_response.answers[0].text + " " + userResponse.form_response.answers[1].text ;
-                const idade = to( userResponse.form_response.answers[2].date);
+                const idade = toString( userResponse.form_response.answers[2].date);
                 const phone = userResponse.form_response.answers[4].phone_number;
                
                 await connection('users').insert({
