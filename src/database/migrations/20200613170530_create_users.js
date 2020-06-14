@@ -6,7 +6,7 @@ exports.up = function (knex) {
         table.unique('cpf');
         table.string('name').notNullable();
         table.string('phone').notNullable();
-        table.string('idade').notNullable();
+        table.integer('idade').notNullable();
         table.boolean('first_access');
     });
 };
