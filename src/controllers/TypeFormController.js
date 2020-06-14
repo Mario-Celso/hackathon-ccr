@@ -6,16 +6,15 @@ module.exports = {
     async webhook(request, response) {
     
             const userResponse = request.body;
-            const cpf = toString(userResponse.form_response.answers[3].number);
-
+            const cpf = String(userResponse.form_response.answers[3].number);
+            
             user = await connection('users')
                 .where('cpf', cpf)
                 .select('name', 'first_access')
                 .first();
 
         const idade = userResponse.form_response.answers[2].number; 
-        console.log(idade)
-        
+            
             if(!user){
                 const id = crypto.randomBytes(4).toString('HEX');
                 
